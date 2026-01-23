@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>교회 행사</title>
+</head>
+<body>
+
+  <h2>코드를 입력하세요</h2>
+  <input id="code">
+  <button onclick="go()">확인</button>
+
+  <script>
+    function go() {
+      const code = document.getElementById("code").value;
+
+      if (code === "A1") {
+        location.href = "page1.html";
+      } else if (code === "B2") {
+        location.href = "page2.html";
+      } else {
+        alert("코드가 틀렸습니다");
+      }
+    }
+  </script>
+
+</body>
+</html>
