@@ -2,9 +2,34 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>결과 A</title>
+  <title>다음 단계</title>
 </head>
 <body style="text-align:center; margin-top:80px;">
-  <h1>첫 번째 결과입니다</h1>
+
+  <h2>다음 값을 입력해주세요</h2>
+  <input id="next" type="number">
+  <br><br>
+  <button onclick="goNext()">다음</button>
+
+  <script>
+    function goNext() {
+      const value = Number(
+        document.getElementById("next").value.trim()
+      );
+
+      if (value >= 6 && value <= 16) {
+        location.href = "page3.html";
+      } 
+      else if (value >= 17 && value <= 27) {
+        location.href = "page4.html";
+      } 
+      else {
+        alert("6~27 사이 숫자를 입력해주세요.");
+      }
+    }
+  </script>
+
 </body>
 </html>
+
+
