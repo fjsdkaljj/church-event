@@ -9,43 +9,24 @@
   <h2>어서오세요 **랜드에! 자기 평가표 점수 더한 값을 입력하세요</h2>
   <input id="score" type="number">
   <br><br>
-  <button onclick="showResult()">결과 보기</button>
-
-  <br><br>
-
-  <!-- 결과 이미지가 나올 자리 -->
-  <img id="resultImg" style="display:none; width:300px;">
+  <button onclick="goResult()">결과 보기</button>
 
   <script>
-    function showResult() {
-      const score = Number(
-        document.getElementById("score").value.trim()
-      );
-      const img = document.getElementById("resultImg");
+    function goResult() {
+      const score = document.getElementById("score").value;
 
-      if (score >= 10 && score <= 25) {
-        img.src = "img/type1.png";
-      } 
-      else if (score >= 26 && score <= 40) {
-        img.src = "img/type2.png";
-      } 
-      else {
-        alert("10부터 40 사이의 숫자를 입력해주세요.");
+      if (!score) {
+        alert("점수를 입력해주세요!");
         return;
       }
 
-      img.style.display = "block";
+      // 점수를 URL에 실어서 result.html로 이동
+      location.href = "result.html?score=" + score;
     }
   </script>
 
 </body>
 </html>
-
-
-
-
-
-
 
 
 
