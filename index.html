@@ -105,31 +105,34 @@
     </button>
   </div>
 
-  <script>
-    function checkValue() {
-      const value = Number(document.getElementById("code").value);
-      const btn = document.getElementById("nextBtn");
+<script>
+  function checkValue() {
+    const value = Number(document.getElementById("code").value);
+    const btn = document.getElementById("nextBtn");
 
-      if (value >= 10 && value <= 40) {
-        btn.disabled = false;
-      } else {
-        btn.disabled = true;
-      }
+    if (value >= 10 && value <= 40) {
+      btn.disabled = false;
+      btn.classList.add("active");   // ✅ 이 줄
+    } else {
+      btn.disabled = true;
+      btn.classList.remove("active"); // ✅ 이 줄
     }
+  }
 
-    function go() {
-      const value = Number(document.getElementById("code").value);
+  function go() {
+    const value = Number(document.getElementById("code").value);
 
-      if (value >= 10 && value <= 25) {
-        location.href = "page1.html";
-      } else if (value >= 26 && value <= 40) {
-        location.href = "page2.html";
-      }
+    if (value >= 10 && value <= 25) {
+      location.href = "page1.html";
+    } else if (value >= 26 && value <= 40) {
+      location.href = "page2.html";
     }
-  </script>
+  }
+</script>
 
 </body>
 </html>
+
 
 
 
