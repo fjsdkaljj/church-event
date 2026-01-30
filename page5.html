@@ -2,50 +2,109 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>결과</title>
+  <title>결과 입력</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #eef2ff, #f8fafc);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, "Noto Sans KR", sans-serif;
+    }
+
+    .card {
+      background: white;
+      width: 90%;
+      max-width: 420px;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #6b7280;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: 20px;
+      padding: 12px;
+      width: 220px;
+      text-align: center;
+      border-radius: 12px;
+      border: 2px solid #e5e7eb;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    input:focus {
+      border-color: #4f46e5;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 30px;
+      font-size: 20px;
+      padding: 16px;
+      border-radius: 14px;
+      border: none;
+      background: #4f46e5;
+      color: white;
+      font-weight: 600;
+      cursor: not-allowed;
+      opacity: 0.5;
+      transition: all 0.2s ease;
+    }
+
+    button.active {
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    button.active:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(79, 70, 229, 0.4);
+    }
+  </style>
 </head>
 
-<body style="
-  text-align:center;
-  margin-top:80px;
-  font-size:20px;
-">
+<body>
 
-  <h2>어서오세요 **랜드에! 자기 평가표 점수 더한 값을 입력하세요</h2>
+  <div class="card">
 
-  <input
-    id="score"
-    type="number"
-    oninput="checkScore()"
-    style="
-      font-size:20px;
-      padding:10px;
-      width:200px;
-      text-align:center;
-      margin-top:20px;
-      margin-bottom:30px;
-    "
-  >
+    <h2>어서오세요 **랜드에!</h2>
+      자기 평가표 점수를 모두 더한 값을<br>
+      입력해주세요
+    </div>
 
-  <br>
+    <input
+      id="score"
+      type="number"
+      placeholder="10 ~ 40"
+      oninput="checkScore()"
+    >
 
-  <button
-    id="nextBtn"
-    onclick="goResult()"
-    disabled
-    style="
-      font-size:20px;
-      padding:14px 40px;
-      border-radius:10px;
-      border:none;
-      background:#4f46e5;
-      color:white;
-      opacity:0.5;
-      cursor:not-allowed;
-    "
-  >
-    결과 확인
-  </button>
+    <button
+      id="nextBtn"
+      onclick="goResult()"
+      disabled
+    >
+      결과 확인
+    </button>
+
+  </div>
 
   <script>
     function checkScore() {
@@ -54,21 +113,18 @@
 
       if (score >= 10 && score <= 40) {
         btn.disabled = false;
-        btn.style.opacity = "1";
-        btn.style.cursor = "pointer";
+        btn.classList.add("active");
       } else {
         btn.disabled = true;
-        btn.style.opacity = "0.5";
-        btn.style.cursor = "not-allowed";
+        btn.classList.remove("active");
       }
     }
 
     function goResult() {
       const score = document.getElementById("score").value;
-      location.href = "result.html?page=5&score=" + score;
+      location.href = "result.html?page=3&score=" + score;
     }
   </script>
 
 </body>
 </html>
-
