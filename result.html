@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>결과</title>
+</head>
+<body style="text-align:center; margin-top:80px;">
+
+  <h2>결과 페이지</h2>
+
+  <img id="resultImg" style="width:300px; display:none;">
+
+  <script>
+    // URL에서 score 값 가져오기
+    const params = new URLSearchParams(window.location.search);
+    const score = Number(params.get("score"));
+    const img = document.getElementById("resultImg");
+
+    if (score >= 10 && score <= 25) {
+      img.src = "img/type1.png";
+    } 
+    else if (score >= 26 && score <= 40) {
+      img.src = "img/type2.png";
+    } 
+    else {
+      alert("올바른 점수가 아닙니다.");
+    }
+
+    img.style.display = "block";
+  </script>
+
+</body>
+</html>
