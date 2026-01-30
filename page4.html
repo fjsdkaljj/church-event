@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>결과</title>
 </head>
+
 <body style="
   text-align:center;
   margin-top:80px;
@@ -12,44 +13,61 @@
 
   <h2>어서오세요 **랜드에! 자기 평가표 점수 더한 값을 입력하세요</h2>
 
-   <input id="score" style="
-    font-size:20px;
-    padding:10px;
-    width:200px;
-    text-align:center;
-    margin-top:20px;
-    margin-bottom:30px;
-  ">
+  <input
+    id="score"
+    type="number"
+    oninput="checkScore()"
+    style="
+      font-size:20px;
+      padding:10px;
+      width:200px;
+      text-align:center;
+      margin-top:20px;
+      margin-bottom:30px;
+    "
+  >
 
   <br>
 
-  <button onclick="goResult()" style="
-    font-size:20px;
-    padding:14px 32px;
-    border-radius:10px;
-    border:none;
-    background:#4f46e5;
-    color:white;
-    cursor:pointer;
-  ">
+  <button
+    id="nextBtn"
+    onclick="goResult()"
+    disabled
+    style="
+      font-size:20px;
+      padding:14px 32px;
+      border-radius:10px;
+      border:none;
+      background:#4f46e5;
+      color:white;
+      opacity:0.5;
+      cursor:not-allowed;
+    "
+  >
     다음
   </button>
 
   <script>
+    function checkScore() {
+      const score = Number(document.getElementById("score").value);
+      const btn = document.getElementById("nextBtn");
+
+      if (score >= 10 && score <= 40) {
+        btn.disabled = false;
+        btn.style.opacity = "1";
+        btn.style.cursor = "pointer";
+      } else {
+        btn.disabled = true;
+        btn.style.opacity = "0.5";
+        btn.style.cursor = "not-allowed";
+      }
+    }
+
     function goResult() {
       const score = document.getElementById("score").value;
-
-      if (!score) {
-        alert("점수를 입력해주세요!");
-        return;
-      }
-
       location.href = "result.html?page=4&score=" + score;
     }
   </script>
 
 </body>
 </html>
-
-
-
