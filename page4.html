@@ -2,37 +2,28 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>다음 단계</title>
+  <title>결과</title>
 </head>
 <body style="text-align:center; margin-top:80px;">
 
   <h2>어서오세요 **랜드에! 자기 평가표 점수 더한 값을 입력하세요</h2>
-  <input id="next" type="number">
+
+  <input id="score" type="number">
   <br><br>
-  <button onclick="goNext()">다음</button>
+  <button onclick="goResult()">결과 보기</button>
 
   <script>
-    function goNext() {
-      const value = Number(
-        document.getElementById("next").value.trim()
-      );
+    function goResult() {
+      const score = document.getElementById("score").value;
 
-      if (value >= 6 && value <= 17) {
-        location.href = "page3.html";
-      } 
-      else if (value >= 18 && value <= 29) {
-        location.href = "page4.html";
-      } 
-      else {
-        alert("6~29 사이 숫자를 입력해주세요.");
+      if (!score) {
+        alert("점수를 입력해주세요!");
+        return;
       }
+
+      location.href = "result.html?score=" + score;
     }
   </script>
 
 </body>
 </html>
-
-
-
-
-
