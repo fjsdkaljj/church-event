@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>교회 행사</title>
 </head>
+
 <body style="
   text-align:center;
   margin-top:80px;
@@ -11,56 +12,68 @@
 ">
 
   <h2>아이스 브레이킹 자기 평가표 점수 더한 값을 입력하세요</h2>
-  
-   <input id="code" style="
-    font-size:20px;
-    padding:10px;
-    width:200px;
-    text-align:center;
-    margin-top:20px;
-    margin-bottom:30px;
-  ">
+
+  <input
+    id="code"
+    type="number"
+    oninput="checkValue()"
+    style="
+      font-size:20px;
+      padding:10px;
+      width:200px;
+      text-align:center;
+      margin-top:20px;
+      margin-bottom:30px;
+    "
+  >
 
   <br>
 
-  <button onclick="go()" style="
-    font-size:20px;
-    padding:14px 32px;
-    border-radius:10px;
-    border:none;
-    background:#4f46e5;
-    color:white;
-    cursor:pointer;
-  ">
+  <button
+    id="nextBtn"
+    onclick="go()"
+    disabled
+    style="
+      font-size:20px;
+      padding:14px 32px;
+      border-radius:10px;
+      border:none;
+      background:#4f46e5;
+      color:white;
+      opacity:0.5;
+      cursor:not-allowed;
+    "
+  >
     다음
   </button>
-  
- <script>
-  function go() {
-    const value = Number(
-      document.getElementById("code").value.trim()
-    );
 
-    if (value >= 10 && value <= 25) {
-      location.href = "page1.html";
-    } 
-    else if (value >= 26 && value <= 40) {
-      location.href = "page2.html";
-    } 
-    else {
-      alert("10부터 40사이의 숫자를 입력해주세요.");
+  <script>
+    function checkValue() {
+      const value = Number(document.getElementById("code").value);
+      const btn = document.getElementById("nextBtn");
+
+      if (value >= 10 && value <= 40) {
+        btn.disabled = false;
+        btn.style.opacity = "1";
+        btn.style.cursor = "pointer";
+      } else {
+        btn.disabled = true;
+        btn.style.opacity = "0.5";
+        btn.style.cursor = "not-allowed";
+      }
     }
-  }
-</script>
 
+    function go() {
+      const value = Number(document.getElementById("code").value);
 
+      if (value >= 10 && value <= 25) {
+        location.href = "page1.html";
+      } 
+      else if (value >= 26 && value <= 40) {
+        location.href = "page2.html";
+      }
+    }
+  </script>
 
-
-
-
-
-
-
-
-
-
+</body>
+</html>
