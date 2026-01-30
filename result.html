@@ -6,24 +6,48 @@
 </head>
 <body style="text-align:center; margin-top:80px;">
 
-  <h2>결과 페이지</h2>
+  <h2>✨ 결과 페이지 ✨</h2>
 
   <img id="resultImg" style="width:300px; display:none;">
 
   <script>
-    // URL에서 score 값 가져오기
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(location.search);
+    const page = params.get("page");
     const score = Number(params.get("score"));
     const img = document.getElementById("resultImg");
 
-    if (score >= 10 && score <= 25) {
-      img.src = "img/type1.png";
-    } 
-    else if (score >= 26 && score <= 40) {
-      img.src = "img/type2.png";
-    } 
+    if (!page || isNaN(score)) {
+      alert("잘못된 접근입니다.");
+      return;
+    }
+
+    // ✅ page3
+    if (page === "3") {
+      if (score >= 10 && score <= 25) img.src = "img/img1.png";
+      else if (score >= 26 && score <= 40) img.src = "img/img2.png";
+    }
+
+    // ✅ page4
+    else if (page === "4") {
+      if (score >= 10 && score <= 25) img.src = "img/img3.png";
+      else if (score >= 26 && score <= 40) img.src = "img/img4.png";
+    }
+
+    // ✅ page5
+    else if (page === "5") {
+      if (score >= 10 && score <= 25) img.src = "img/img5.png";
+      else if (score >= 26 && score <= 40) img.src = "img/img6.png";
+    }
+
+    // ✅ page6
+    else if (page === "6") {
+      if (score >= 10 && score <= 25) img.src = "img/img7.png";
+      else if (score >= 26 && score <= 40) img.src = "img/img8.png";
+    }
+
     else {
-      alert("올바른 점수가 아닙니다.");
+      alert("알 수 없는 페이지입니다.");
+      return;
     }
 
     img.style.display = "block";
@@ -31,3 +55,4 @@
 
 </body>
 </html>
+
